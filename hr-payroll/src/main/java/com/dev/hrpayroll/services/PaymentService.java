@@ -11,6 +11,4 @@ public class PaymentService {
 		return new Payment("Bob", 200.0, days);
 				
 	}
-	
-
 }
