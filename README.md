@@ -4,19 +4,23 @@
 ## Comandos Docker
 #### Criar uma rede Docker
 ```
-docker network create <nome-da-rede>
+docker network create hr-proj-net
 ```
 #### Baixar imagem do Dockerhub
 ```
-docker pull <nome-da-imagem:tag>
+docker pull postgres:12-alpine
 ```
 #### Ver imagens
 ```
 docker images
 ```
 #### Rodar um container de uma imagem
+### docker run -p <porta-externa>:<porta-interna> --name <nome-do-container> --network <nome-da-rede> <nome-da-imagem:tag>
 ```
-docker run -p <porta-externa>:<porta-interna> --name <nome-do-container> --network <nome-da-rede> <nome-da-imagem:tag> 
+
+docker run -p 5432:5432 --name hr-worker-pg12 --network hr-proj-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_dev_hr_worker postgres:12-alpine 
+docker run -p 5432:5432 --name hr-worker-pg12 --network hr-proj-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_dev_hr_user postgres:12-alpine 
+
 ```
 #### Listar containers
 ```
