@@ -1,9 +1,11 @@
 package com.dev.hruser.config;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+@RefreshScope
 @Configuration
 public class AppConfig {
 	
