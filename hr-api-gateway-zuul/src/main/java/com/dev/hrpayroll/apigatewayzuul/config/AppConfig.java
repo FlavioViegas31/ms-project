@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+
 @RefreshScope
 @Configuration
 public class AppConfig {
 	
-	@Value("${jwt.secret}")
+	@Value("${jwt.secret:MY-JWT-SECRET}")
 	private String jwtSecret;
 
 	@Bean
@@ -19,6 +20,10 @@ public class AppConfig {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
 		tokenConverter.setSigningKey(jwtSecret);
 		return tokenConverter;
+	}
+	
+	public void doSomething() {
+		System.out.println("My property  is: " + jwtSecret);
 	}
 	
 	@Bean
